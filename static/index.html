@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Perfil Antimicrobiano</title>
+        <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    </head>
+    <body ng-app="ccihApp" ng-cloak>
+        <md-content>
+            <!-- The top toolbar -->
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Configurações">
+                        <md-icon md-svg-icon="node_modules/material-design-icons/maps/svg/design/ic_local_airport_24px.svg"></md-icon>
+                    </md-button>
+                    <h2>
+                        <span class="md-title">Get Lost!</span>
+                    </h2>
+                </div>
+            </md-toolbar>
+            <!-- The content area -->
+            <div layout="row">
+                <!-- 20% padding to the left -->
+                <div flex="20"></div>
+
+                <!-- the main action happens here -->
+                <md-card flex ng-controller="MainCtrl as ctrl">
+                    <md-card-content>
+                        <!-- the row for the city select autocomplete list -->
+                        <md-content>
+                            <md-autocomplete md-selected-item="ctrl.selectedItem"
+                                md-search-text="ctrl.searchText"
+                                md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                md-item-text="item.display"
+                                md-min-length="0"
+                                placeholder="Where are you flying from?">
+                                <md-item-template>
+                                    <span
+                                        md-highlight-text="ctrl.searchText"md-highlight-flags="^i">{{item.display}}</span>
+                                </md-item-template>
+                                <md-not-found>
+                                    No matches found for "{{ctrl.searchText}}".
+                                </md-not-found>
+                            </md-autocomplete>
+                            <md-tooltip>
+                                Pick the city you want to start from!
+                            </md-tooltip>
+                            <p class="md-caption">NYC, CHI and LON work well</p>
+

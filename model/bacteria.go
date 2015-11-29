@@ -1,9 +1,6 @@
 package model
 
-import (
-	"fmt"
-	"time"
-)
+import "time"
 
 type Bacteria struct {
 	Id       int64
@@ -17,21 +14,9 @@ func (b *Bacteria) String() string {
 	return util.ToStr(b.Id)
 }
 
-func GetBacteriaById(id int64) (*Bacteria, error) {
-	var bac Bacteria
-	has, err := orm.Id(id).Get(&bac)
-	if err != nil {
-		return nil, err
-	}
-	if !has {
-		return nul, ErrNotExist
-	}
-	return &bac, nil
-}
-
 func GetBacteriaByName(name string) (*Bacteria, error) {
-	var bac = Bacteria{Name: name}
-	has, err = orm.Get(&bac)
+	err = GetByObj(&Bacteria{Name: name})
+
 	if err != nil {
 		return nil, err
 	}
