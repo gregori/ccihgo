@@ -8,11 +8,12 @@
   <body ng-app="ccihApp" ng-cloak>
     <md-content>
       <!-- The top toolbar -->
-      <md-toolbar>
+      <md-toolbar ng-show="globals.currentUser">
         <div class="md-toolbar-tools" ng-controller="AppController as ctrl">
           <md-menu>
             <md-button class="md-icon-button" aria-label="Configurações" ng-click="$mdOpenMenu($event)" class="md-icon-button">
               <md-icon md-svg-icon="node_modules/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+              <md-tooltip>Configurações</md-tooltip>
             </md-button>
             <md-menu-content width="4">
               <md-menu-item>
@@ -43,12 +44,15 @@
 		  </md-menu>
           <md-button class="md-icon-button" ng-click="ctrl.cadPerfil($event)">
             <md-icon aria-label="Cadastrar Perfil Micribiológico" style="fill:#E6E8F5" md-svg-icon="node_modules/material-design-icons/content/svg/production/ic_create_24px.svg" md-menu-align-target=""></md-icon>
+            <md-tooltip>Cadastrar Perfil Microbiológico</md-tooltip>
           </md-button>
           <md-button class="md-icon-button" ng-click="ctrl.viewContabilizacao($event)">
             <md-icon aria-label="Contabilização Geral" style="fill:#E6E8F5" md-svg-icon="node_modules/material-design-icons/image/svg/production/ic_grid_on_24px.svg" md-menu-align-target=""></md-icon>
+            <md-tooltip>Contabilização Geral</md-tooltip>
           </md-button>
           <md-button class="md-icon-button" ng-click="ctrl.viewGraficos($event)">
             <md-icon aria-label="Gráficos" style="fill:#E6E8F5" md-svg-icon="node_modules/material-design-icons/action/svg/production/ic_timeline_24px.svg" md-menu-align-target=""></md-icon>
+            <md-tooltip>Gráficos</md-tooltip>
           </md-button>
 		  <span flex></span>
 		  <h2>
