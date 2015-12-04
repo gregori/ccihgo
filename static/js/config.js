@@ -5,8 +5,8 @@
         .module('ccihApp')
         .config(config);
 
-    config.$inject = ['$routeProvider'];
-    function config($routeProvider) {
+    config.$inject = ['$routeProvider', '$rootScope'];
+    function config($routeProvider, $rootScope) {
         $routeProvider
             .when('/', {
                 controller: 'HomeController',
@@ -16,26 +16,6 @@
             .when('/login' {
                 controller: 'LoginController',
                 templateUrl: 'views/login.view.html',
-                controllerAs: 'vm'
-            })
-            .when('/cadastro/bacteria' {
-                controller: 'BacteriaController',
-                templateUrl: 'views/bacteria.view.html',
-                controllerAs: 'vm'
-            })
-            .when('/cadastro/setor' {
-                controller: 'SetorController',
-                templateUrl: 'views/setor.view.html',
-                controllerAs: 'vm'
-            })
-            .when('/cadastro/material' {
-                controller: 'MaterialController',
-                templateUrl: 'views/material.view.html',
-                controllerAs: 'vm'
-            })
-            .when('/cadastro/antibiotico' {
-                controller: 'AntibioticoController',
-                templateUrl: 'views/antibiotico.view.html',
                 controllerAs: 'vm'
             })
             .when('/cadastro/perfil' {
@@ -54,5 +34,7 @@
                 controllerAs: 'vm'
             })
             .otherwise({ redirectTo: '/login' });
+            
+        $rootScope.urlBase = 'http://localhost:3000';
     }
 })();
