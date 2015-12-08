@@ -5,8 +5,8 @@
         .module('ccihApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['UserService', '$rootScope', 'BacteriaService', '$mdToast'];
+    function HomeController(UserService, $rootScope, BacteriaService, $mdToast) {
         var vm = this;
 
         vm.user = null;
@@ -38,5 +38,10 @@
                     loadAllUsers();
                 });
         }
+
+        vm.bacteriaSetup = function (event) {
+            BacteriaService.ShowForm();
+        }
+
     }
 })();

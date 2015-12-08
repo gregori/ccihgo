@@ -9,6 +9,7 @@ type Antibiotic struct {
 	Id       int64
 	Name     string    `xorm:"varchar(100) not null"`
 	Gram     string    `xorm:"varchar(1) not null"`
+	ShortName string	`xorm:"varchar(5) not null"`
 	Created  time.Time `xorm:"created"`
 	Modified time.Time `xorm:"updated"`
 }

@@ -1,0 +1,64 @@
+
+
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Cadastro de Bactérias</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Fechar janela"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container>
+          <label>Nome</label>
+          <input ng-model="vm.bacteria.name">
+        </md-input-container>
+        <md-input-container>
+          <label>Gram</label>
+          <md-select ng-model="vm.bacteria.gram">
+            <md-option ng-repeat="gram in vm.grams" value="{{gram}}">
+              {{gram}}
+            </md-option>
+        </md-input-container>
+        <md-button ng-click="vm.save()">
+          Gravar
+        </md-button>
+        <md-button ng-click="vm.cancel()" style="margin-right:20px;">
+          Cancelar
+        </md-button>
+        <md-divider></md-divider>
+        <md-list>
+          <md-subheader class="md-sticky">Bactérias cadastradas</md-subheader>
+          <md-list-item class="md-2-line" ng-repeat="vm.bacteria in vm.bacterias">
+            <div class="md-list-item-text" layout="column">
+              <span ng-show="vm.editable">
+                <input type="hidden" ng-model="vm.bacteria.id">
+                <md-input-container>
+                  <label>Nome</label>
+                  <input ng-model="vm.bacteria.name">
+                </md-input-container>
+                <md-input-container>
+                  <label>Gram</label>
+                  <md-select ng-model="vm.bacteria.gram">
+                    <md-option ng-repeat="gram in vm.grams" value="{{gram}}">
+                      {{gram}}
+                    </md-option>
+                </md-input-container>
+              </span>
+              <span ng-show="!vm.editable">
+                <h3>{{bacteria.nome}}</h3> - Gram {{bacteria.gram}}
+              </span>
+              <md-icon class="md-secondary" ng-click="vm.edit()" md-svg-icon="editable ? 'node_modules/material-design-icons/action/svg/production/ic_done_24px.svg' : 'node_modules/material-design-icons/content/svg/production/ic_create_24px.svg'" aria-label="Edição"></md-icon>
+              <md-icon class="md-secondary" ng-click="vm.delete()" ng-show="!vm.editable" md-svg-icon="node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg" arial-label="Apagar"></md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>
+
