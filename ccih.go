@@ -21,7 +21,7 @@ type appContext struct {
 	db *sql.DB
 }
 
-func (c *appContext) authHandler(next http.Handler) http.Handler {
+/*func (c *appContext) authHandler(next http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
 		authToken := r.Header().Get("Authorization")
 		user, err := getUser(c.db, authToken)
@@ -41,24 +41,12 @@ func (c *appContext) authHandler(next http.Handler) http.Handler {
 func (c *appContext) adminHandler(w http.ResponseWriter, r *http.Request) {
 	user := context.Get(r, "user")
 	json.NewEncoder(w).Encode(user)
-}
+} */
 
-func (c *appContext) teaHandler(w http.ResponseWriter, r *http.Request) {
+func (c *appContext) getBacteriaHandler(w http.ResponseWriter, r *http.Request) {
 	params := context.Get(r, "params").(httprouter.Params)
-	tea := getTea(c.db, params.ByName("id"))
-	json.NewEncoder(w).Encode(tea)
-}
-
-type router struct {
-	*httprouter.Router
-}
-
-func (r *router) Get(path string, handler http.Handler) {
-	r.GET(path, wrapHandler(handler))
-}
-
-func NewRouter() *router {
-	return &router{httprouter.New()}
+	bacteria := map[string]string{"id": 1, "name": "S. aureus"}
+	json.NewEncoder(w).Encode(bacteria)
 }
 
 func loggingHandler(next http.Handler) http.Handler {
